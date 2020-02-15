@@ -53,9 +53,15 @@ class Pay {
         $sign = substr(ensy($keyss, $this->key) , 0, 15);
         if($qr=='yes'){
         $url = 'https://' . $this->url . '/submit?skey=' . $keyss . '&sign=' . $sign . '&sign_type=MD5';
-        return file_get_contents($url);}else{
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        return $output;
+        }else{
         return 'https://' . $this->url . '/submit?skey=' . $keyss . '&sign=' . $sign . '&sign_type=MD5';}
-    }
+        }
     /**
      * @Note   验证签名
      * @param $data  待验证参数
