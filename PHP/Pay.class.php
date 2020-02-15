@@ -60,7 +60,8 @@ class Pay {
         curl_close($ch);
         return $output;
         }else{
-        return 'https://' . $this->url . '/submit?skey=' . $keyss . '&sign=' . $sign . '&sign_type=MD5';}
+        return 'https://' . $this->url . '/submit?skey=' . $keyss . '&sign=' . $sign . '&sign_type=MD5';
+        }
         }
     /**
      * @Note   验证签名
