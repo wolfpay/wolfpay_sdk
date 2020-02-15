@@ -51,7 +51,10 @@ class Pay {
         $keys = ensy($string, $this->pid);
         $keyss = base64url_encode($this->pid . '-' . $keys);
         $sign = substr(ensy($keyss, $this->key) , 0, 15);
-        return 'https://' . $this->url . '/submit?skey=' . $keyss . '&sign=' . $sign . '&sign_type=MD5';
+        if($qr=='yes'){
+        $url = 'https://' . $this->url . '/submit?skey=' . $keyss . '&sign=' . $sign . '&sign_type=MD5';
+        return file_get_contents($url);}else{
+        return 'https://' . $this->url . '/submit?skey=' . $keyss . '&sign=' . $sign . '&sign_type=MD5';}
     }
     /**
      * @Note   验证签名
