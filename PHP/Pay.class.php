@@ -45,8 +45,8 @@ class Pay {
      * @param $sitename     站点名称
      * @return string
      */
-    public function submit($type, $out_trade_no, $notify_url, $return_url, $name, $money, $sitename) {
-        $data = ['pid' => $this->pid, 'type' => $type, 'out_trade_no' => $out_trade_no, 'notify_url' => $notify_url, 'return_url' => $return_url, 'name' => $name, 'money' => $money, 'sitename' => $sitename];
+    public function submit($type, $out_trade_no, $notify_url, $return_url, $name, $money, $sitename, $qr) {
+        $data = ['pid' => $this->pid, 'type' => $type, 'out_trade_no' => $out_trade_no, 'notify_url' => $notify_url, 'return_url' => $return_url, 'name' => $name, 'money' => $money, 'sitename' => $sitename, 'qrapi' => $qr];
         $string = http_build_query($data);
         $keys = ensy($string, $this->pid);
         $keyss = base64url_encode($this->pid . '-' . $keys);
