@@ -29,8 +29,11 @@ $money = '0.01';
 //站点名称
 $sitename = '测试支付';
 
+//QRAPI
+$qr='no';
+
 //发起支付
-$url = $pay->submit($type, $out_trade_no, $notify_url, $return_url, $name, $money, $sitename);
+$url = $pay->submit($type, $out_trade_no, $notify_url, $return_url, $name, $money, $sitename,$qr);
 
 //输出表单
 echo "<script>window.location.href='{$url}';</script>";
