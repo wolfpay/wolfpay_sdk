@@ -64,6 +64,18 @@ class Pay {
         return 'https://' . $this->url . '/submit?skey=' . $keyss . '&sign=' . $sign . '&sign_type=MD5';
         }
         }
+        /**
+     * @Note  退款发起
+     * @param $trade_no     订单号
+     */
+    public function refund($trade_no) {
+        $data = ['pid' => $this->pid, 'trade_no' => $out_trade_no];
+        $string = http_build_query($data);
+        $keys = ensy($string, $this->pid);
+        $keyss = base64url_encode($this->pid . '-' . $keys);
+        $sign = substr(ensy($keyss, $this->key) , 0, 15);
+        return 'https://' . $this->url . '/refund?skey=' . $keyss . '&sign=' . $sign . '&sign_type=MD5';
+        }
     /**
      * @Note   验证签名
      * @param $data  待验证参数
