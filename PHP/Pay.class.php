@@ -32,7 +32,7 @@ class Pay {
     public function __construct($pid, $key, $api) {
         $this->pid = $pid;
         $this->key = $key;
-        $this->api = $api;
+        $this->url = $api;
     }
     /**
      * @Note  支付发起
