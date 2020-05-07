@@ -68,8 +68,8 @@ class Pay {
      * @Note  退款发起
      * @param $trade_no     订单号
      */
-    public function refund($trade_no) {
-        $data = ['pid' => $this->pid, 'trade_no' => $trade_no];
+    public function refund($trade_no,$money) {
+        $data = ['pid' => $this->pid, 'trade_no' => $trade_no, 'money' => $money];
         $string = http_build_query($data);
         $keys = ensy($string, $this->pid);
         $keyss = base64url_encode($this->pid . '-' . $keys);
