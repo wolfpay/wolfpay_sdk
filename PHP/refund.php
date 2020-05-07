@@ -11,8 +11,11 @@ $pay = new Pay($pid, $key, $api);
 //退款訂單號
 $trade_no='';
 
+//退款金額
+$money='';//可留空
+
 //发起退款
-$url = $pay->refund($trade_no);
+$url = $pay->refund($trade_no,$money);
 
 //输出表单
 echo "<script>window.location.href='{$url}';</script>";
